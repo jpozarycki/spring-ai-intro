@@ -1,8 +1,6 @@
 package com.jpozarycki.springaiintro.controllers;
 
-import com.jpozarycki.springaiintro.model.Answer;
-import com.jpozarycki.springaiintro.model.GetCapitalRequest;
-import com.jpozarycki.springaiintro.model.Question;
+import com.jpozarycki.springaiintro.model.*;
 import com.jpozarycki.springaiintro.services.OpenAIService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,12 +13,12 @@ public class QuestionController {
     private final OpenAIService openAIService;
 
     @PostMapping("/capitalWithInfo")
-    public Answer getCapitalWithInfo(@RequestBody GetCapitalRequest getCapitalRequest) {
+    public GetCapitalWithInfoResponse getCapitalWithInfo(@RequestBody GetCapitalRequest getCapitalRequest) {
         return openAIService.getCapitalWithInfo(getCapitalRequest);
     }
 
     @PostMapping("/capital")
-    public Answer getCapital(@RequestBody GetCapitalRequest getCapitalRequest) {
+    public GetCapitalResponse getCapital(@RequestBody GetCapitalRequest getCapitalRequest) {
         return openAIService.getCapital(getCapitalRequest);
     }
 
