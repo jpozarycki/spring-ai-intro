@@ -1,6 +1,7 @@
 package com.jpozarycki.springaiintro.controllers;
 
 import com.jpozarycki.springaiintro.model.Answer;
+import com.jpozarycki.springaiintro.model.GetCapitalRequest;
 import com.jpozarycki.springaiintro.model.Question;
 import com.jpozarycki.springaiintro.services.OpenAIService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class QuestionController {
     private final OpenAIService openAIService;
+
+    @PostMapping("/capital")
+    public Answer getCapital(@RequestBody GetCapitalRequest getCapitalRequest) {
+        return openAIService.getCapital(getCapitalRequest);
+    }
 
     @PostMapping("/ask")
     public Answer askQuestion(@RequestBody Question question) {
